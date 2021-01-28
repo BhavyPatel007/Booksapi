@@ -8,7 +8,7 @@ router.get('/books',async (req,res)=>{
     res.send(book);
 });
 
-router.post("/books",async(req,res)=>{
+router.post('/books',async(req,res)=>{
     const book = new Book({
         name:req.body.name,
         qty:req.body.qty
@@ -17,7 +17,7 @@ router.post("/books",async(req,res)=>{
     res.send(book);
 });
 
-router.delete("/books/:id",async(req,res)=>{
+router.delete('/books/:id',async(req,res)=>{
     try{
         await Book.deleteOne({_id:req.params.id});
         res.send("deleted");
