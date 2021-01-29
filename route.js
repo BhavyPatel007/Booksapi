@@ -17,6 +17,19 @@ router.post('/books',async(req,res)=>{
     res.send(book);
 });
 
+router.patch("/books/:id",async(req,res)=>{
+    try{
+        const book = await Book.findOne({_id:res.params.id});
+        book.name = res.body.name;
+
+        await book.save();
+        res.send(book);
+    }catch(error){
+        res.send(error);
+    }
+});
+
+
 router.delete('/books/:id',async(req,res)=>{
     try{
         await Book.deleteOne({_id:req.params.id});
