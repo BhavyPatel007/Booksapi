@@ -19,8 +19,8 @@ router.post('/books',async(req,res)=>{
 
 router.patch("/books/:id",async(req,res)=>{
     try{
-        const book = await Book.findOne({_id:res.params.id});
-        book.name = res.body.name;
+        const book = await Book.findOne({_id:req.params.id});
+        book.name = req.body.name;
 
         await book.save();
         res.send(book);
