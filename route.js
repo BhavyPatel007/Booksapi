@@ -21,7 +21,7 @@ router.patch("/books/:id", async (req, res) => {
     try {
         const book = await Book.findOne({ _id: req.params.id });
         book.name = req.body.name;
-        book.qty = res.body.qty;
+        book.qty = req.body.qty;
         await book.save();
         res.send(book);
     } catch (error) {
